@@ -10,10 +10,12 @@ bot = discord.Client( intents = intents )
 
 def get_help():
     input = "Yo 我是 Minecraft 地圖座標小幫手，以下是我的指令~\n\
-        $l：列出所有已記錄座標\n\
-        $a 名稱 0 0 0：新增座標\n\
-        $d 名稱：刪除座標\n\
-        $s 名稱：尋找座標\n\"
+----------------------------\n\
+$l：列出所有已記錄座標\n\
+$a 名稱 0 0 0：新增座標\n\
+$d 名稱：刪除座標\n\
+$s 名稱：尋找座標\n\
+----------------------------\n"
     return input
 
 # 輸入字串型別的地區名稱，並回傳是否存在和位置
@@ -75,7 +77,7 @@ async def on_message( message ):
         elif ( len(inputList) == 2 ):
             await message.channel.send( "Where?" )
         else:
-            result = inputList[1] + ' ' + inputList[2] + '\n'
+            result = '\n' + inputList[1] + ' ' + inputList[2]
             with open( "position.txt", mode='a', encoding="utf-8" ) as file:
                 file.write( result )
             
@@ -120,7 +122,6 @@ async def on_message( message ):
     elif message.content.startswith( '$h' ) :
         await message.channel.send( get_help() )
 
-
 # 調用event函式庫
 @bot.event
 
@@ -128,4 +129,4 @@ async def on_message( message ):
 async def on_ready():
     print( '>> Bot is online <<' )
 
-bot.run( [token] )
+bot.run( [] )

@@ -8,24 +8,12 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = discord.Client( intents = intents )
 
-def get_inputBMO():
-    coninput_list = [
-        "如果這是真的攻擊你早就掛了",
-        "電池不足，關機...",
-        "我們來玩",
-        "誰...想要打...電動玩具~",
-        "探險時間！"
-    ]
-    input = random.choice( coninput_list )
-    return input
-
 def get_help():
     input = "Yo 我是 Minecraft 地圖座標小幫手，以下是我的指令~\n\
         $l：列出所有已記錄座標\n\
         $a 名稱 0 0 0：新增座標\n\
         $d 名稱：刪除座標\n\
-        $s 名稱：尋找座標\n\
-        目前只有開放主世界查詢，其他地區請耐心等候"
+        $s 名稱：尋找座標\n\"
     return input
 
 # 輸入字串型別的地區名稱，並回傳是否存在和位置
@@ -132,10 +120,6 @@ async def on_message( message ):
     elif message.content.startswith( '$h' ) :
         await message.channel.send( get_help() )
 
-    # 如果以「呼叫BMO」開頭
-    elif message.content.startswith( '呼叫BMO' ) :
-        input = get_inputBMO()
-        await message.channel.send( input )
 
 # 調用event函式庫
 @bot.event
@@ -144,4 +128,4 @@ async def on_message( message ):
 async def on_ready():
     print( '>> Bot is online <<' )
 
-bot.run( 'MTA3NjkwNTU3MDgwMTU2OTg2Mw.GYls9N.0ZMu-Z1_fQZEN8YL4rhMS9WwjiaZvL5iTat6vM' )
+bot.run( [token] )

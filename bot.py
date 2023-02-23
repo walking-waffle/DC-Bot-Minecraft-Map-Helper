@@ -92,12 +92,12 @@ async def on_message( message ):
             target = inputList[1]
             find, targetIP = IsExistAndReturnIP( target )
 
-        # 有沒找到
-        if find == bool(True):
-            DeletePosition( target )
-            await message.channel.send( "Success!" )
-        else:
-            await message.channel.send( "Not Found" )
+            # 有沒找到
+            if find == bool(True):
+                DeletePosition( target )
+                await message.channel.send( "Success!" )
+            else:
+                await message.channel.send( "Not Found" )
 
     # search
     elif message.content.startswith( '$s' ) :
@@ -110,11 +110,11 @@ async def on_message( message ):
             name = inputList[1]
             find, targetIP = IsExistAndReturnIP( name )
 
-        # 有沒找到
-        if find == bool(True):
-            await message.channel.send( targetIP )
-        else:
-            await message.channel.send( "Not Found" )
+            # 有沒找到
+            if find == bool(True):
+                await message.channel.send( targetIP )
+            else:
+                await message.channel.send( "Not Found" )
 
     # help
     elif message.content.startswith( '$h' ) :

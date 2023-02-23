@@ -1,1 +1,1 @@
-# DC-Bot-Minecraft-Map-Helper
+# DC Bot Minecraft-Map-Helper
